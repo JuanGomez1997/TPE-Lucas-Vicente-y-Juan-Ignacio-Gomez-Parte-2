@@ -48,22 +48,22 @@ class ControladorLibros extends ControladorApi{
 
     }
 
-    public function buscadorLibro(){
-        $dato= $this->MostrarDatos();
-        if (empty($dato->titulo)) {
+    public function buscadorLibro($params = null){
+        $titulo = $params[':TITULO'] ?? '';
+        if (empty($titulo)) {
             $this->Vista->respuesta("Por favor, proporcione un título", 400);
             return;
         }
-        $titulo = $dato->titulo;
-        $librosEncontrado = $this->modelo->encontrarLibro($titulo);
-        if (!$librosEncontrado) {
+    
+        $librosEncontrados = $this->modelo->encontrarLibro($titulo);
+    
+        if (!$librosEncontrados) {
             $this->Vista->respuesta("No se encontró ningún libro con el título proporcionado", 404);
             return;
         }
-        $this->Vista->respuesta($librosEncontrado, 200);
+    
+        $this->Vista->respuesta($librosEncontrados, 200);
     }
 
 
 }    
-
-    

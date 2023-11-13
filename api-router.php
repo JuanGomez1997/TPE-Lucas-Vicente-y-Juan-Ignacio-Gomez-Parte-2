@@ -8,7 +8,7 @@
     $router->addRoute('libros',     'GET',    'ControladorLibros', 'mostrarLista'); 
     $router->addRoute('libros',     'POST',   'ControladorLibros', 'aniadirLibro');
     $router->addRoute('libros/:ID', 'GET',    'ControladorLibros', 'mostrarLibroId');
-    $router->addRoute('libros/:ID', 'POST',    'ControladorLibros', 'buscadorLibro');
+    $router->addRoute('libro/:TITULO', 'GET',    'ControladorLibros', 'buscadorLibro');
     $router->addRoute('generos',     'GET',    'ControladorGeneros', 'listarGeneros');
     $router->addRoute('generos/:ID',     'GET',    'ControladorGeneros', 'listarLibrosporGenero');
 
