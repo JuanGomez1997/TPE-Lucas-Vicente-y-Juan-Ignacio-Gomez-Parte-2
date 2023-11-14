@@ -1,20 +1,20 @@
 <?php
-    class VistaApi {
-        public function respuesta($dato, $estado = 200) {
-            header('Content-type: application/json');
-            header('HTTP/1.1 '.$estado." ".$this->_requestStatus($estado));
-            echo json_encode($dato);
-        }
-
-        private function _requestStatus($code) {
-            $estado = array(
-                200 => "OK",
-                201 => "Created",
-                400 => "Bad request",
-                404 => "Not found"
-                
-            );
-            return (isset($estado[$code])) ? $estado[$code] : $estado[500];
-        }
-
+class VistaApi {
+    public function respuesta ($datos, $estado = 200) {
+        header('Content-type: application/json');
+        header('HTTP/1.1 ' . $estado . " " . $this->_estadoSolicitud($estado));
+        echo json_encode($datos);
     }
+
+    private function _estadoSolicitud($codigo) {
+        $estado = array(
+            200 => "OK",
+            201 => "Creado",
+            400 => "Solicitud Incorrecta",
+            404 => "No Encontrado",
+            500 => "Error Interno del Servidor",
+        );
+        return (isset($estado[$codigo])) ? $estado[$codigo] : $estado[500];
+    }
+
+}

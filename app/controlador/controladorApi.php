@@ -2,15 +2,15 @@
     require_once './app/vista/vistaAPI.php';
     
     abstract class ControladorApi {
-        protected $Vista;
+        protected $vista;
         private $dato;
         
         function __construct() {
-            $this->Vista = new VistaApi();
+            $this->vista = new VistaApi();
             $this->dato = file_get_contents('php://input');
         }
 
-        function MostrarDatos() {
+        function obtenerDatos() {
             return json_decode($this->dato);
         }
     }
